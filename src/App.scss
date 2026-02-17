@@ -1,6 +1,6 @@
 /* Global Styles ported from App.vue */
 
-* { 
+* {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma;
@@ -12,7 +12,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
   border-radius: 10px;
 }
 
@@ -21,24 +21,28 @@
 }
 
 body {
-    background-color: #ffffff;
-    color: #000000;
+  background-color: #ffffff;
+  color: #000000;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
 }
 
 .dark-mode {
   background: #0D1117;
   color: white;
   min-height: 100vh;
-  
-  #navigation{
+
+  #navigation {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
   }
-  
-  .type-text { /* specific class for react-type-animation if needed */
-      color: white;
+
+  .type-text {
+    /* specific class for react-type-animation if needed */
+    color: white;
   }
-  
-  .btn, .btn-color-2{
+
+  .btn,
+  .btn-color-2 {
     color: white !important;
   }
 }

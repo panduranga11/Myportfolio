@@ -13,6 +13,7 @@
 
   article.skill-card {
     width: 15rem;
+    max-width: 100%;
     height: 5rem;
     background: white;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -55,5 +56,9 @@
       background: #47BA87;
       color: white;
     }
+  }
+
+  p.text-muted {
+    color: #bbb !important;
   }
 }

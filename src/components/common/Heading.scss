@@ -5,4 +5,20 @@
     font-family: 'Helvetica', sans-serif;
     font-weight: bold;
   }
+
+  @media screen and (max-width: 768px) {
+    margin-top: 50px;
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+}
+
+.dark-mode #heading-comp {
+  color: white;
+
+  p {
+    color: #bbb;
+  }
 }

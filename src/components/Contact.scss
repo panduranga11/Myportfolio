@@ -35,6 +35,18 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  #contact-wrapper footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+
+    .social-icon {
+      margin: 0 auto;
+    }
+  }
+}
+
 .dark-mode #contact-wrapper {
   footer {
     color: white;
