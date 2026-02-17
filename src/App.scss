@@ -1,0 +1,44 @@
+/* Global Styles ported from App.vue */
+
+* { 
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma;
+  transition: width 1s ease, height 1s ease, background-color 1s ease;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 10px;
+}
+
+::selection {
+  background-color: lightgrey;
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.dark-mode {
+  background: #0D1117;
+  color: white;
+  min-height: 100vh;
+  
+  #navigation{
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+  }
+  
+  .type-text { /* specific class for react-type-animation if needed */
+      color: white;
+  }
+  
+  .btn, .btn-color-2{
+    color: white !important;
+  }
+}

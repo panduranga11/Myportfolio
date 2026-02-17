@@ -1,0 +1,74 @@
+#projects {
+  .project-container {
+    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-bottom: 5rem;
+
+    .card {
+      width: 30rem;
+      transition: transform 0.3s ease-in-out;
+      background: transparent;
+      border: none;
+
+      .card-body {
+        background: white;
+        border-radius: 0 0 10px 10px;
+        padding: 1.5rem;
+      }
+
+      &:hover {
+        transform: scale(1.02);
+        z-index: 2;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .badge {
+        font-size: 0.9rem;
+        background: transparent;
+        color: rgb(53, 53, 53); // Dark text for light mode
+        margin-bottom: 0.5rem;
+        display: inline-block;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #47BA87;
+          color: white;
+          border-color: #47BA87 !important;
+        }
+      }
+    }
+  }
+}
+
+.dark-mode #projects {
+  .project-container .card {
+    .card-body {
+      background: #161b22;
+      color: white;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .badge {
+      color: white;
+      border-color: white !important;
+
+      &:hover {
+        background: #47BA87;
+        border-color: #47BA87 !important;
+      }
+    }
+
+    .btn {
+      color: white;
+
+      &:hover {
+        color: #47BA87;
+      }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+#navigation {
+  background-color: white;
+  /* default light mode bg */
+  position: fixed;
+  /* Changed to fixed for hide/show animation */
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease, backdrop-filter 0.3s ease;
+
+  &.nav-hidden {
+    transform: translateY(-100%);
+  }
+
+  &.nav-visible {
+    transform: translateY(0);
+  }
+
+  &.glossy {
+    background-color: rgba(255, 255, 255, 0.7) !important; // Semi-transparent
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  width: 100%;
+
+  ul {
+    float: right;
+    list-style: none;
+    align-items: center;
+
+    li {
+      cursor: pointer;
+
+      a:hover {
+        color: #47BA87;
+        text-decoration: underline;
+      }
+    }
+
+    .checkbox {
+      opacity: 0;
+      position: absolute;
+    }
+
+    .checkbox-label {
+      background-color: #111;
+      width: 50px;
+      height: 26px;
+      border-radius: 50px;
+      position: relative;
+      padding: 5px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .ball {
+        background-color: #fff;
+        width: 22px;
+        height: 22px;
+        position: absolute;
+        left: 2px;
+        top: 2px;
+        border-radius: 50%;
+        transition: transform 0.2s linear;
+      }
+    }
+
+    .fa-moon {
+      color: #f1c40f;
+    }
+
+    .fa-sun {
+      color: #f39c12;
+    }
+
+    .checkbox:checked+.checkbox-label .ball {
+      transform: translateX(24px);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+
+    /* Changed from 375px to 768px for better mobile handling, or keep 375 if strict clone */
+    .d-flex {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    ul {
+      padding-left: 0;
+      margin-top: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.dark-mode #navigation {
+  background-color: #0D1117; // Default solid for top
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+  &.glossy {
+    background-color: rgba(13, 17, 23, 0.7) !important; // Semi-transparent dark
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  }
+
+  h2 {
+    color: white;
+  }
+
+  ul li a {
+    color: white;
+
+    &:hover {
+      color: #47BA87;
+    }
+  }
+}

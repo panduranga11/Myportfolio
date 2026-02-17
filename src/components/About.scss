@@ -1,0 +1,75 @@
+#about {
+  .content-wrapper {
+    margin-left: 3rem;
+    /* bootstrap ml-5 replacement approx */
+  }
+
+  .verticle-line {
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, #47BA87 0%, #34495E 100%);
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+  }
+
+  h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .text-green {
+    color: #47BA87;
+  }
+
+  .text-blue {
+    color: #34495E;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+
+  ul {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .badge {
+    font-size: 0.9rem;
+    background: transparent;
+    color: rgb(53, 53, 53);
+    margin-bottom: 0.5rem;
+    display: inline-block;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #47BA87;
+      color: white;
+      border-color: #47BA87 !important;
+    }
+  }
+}
+
+.dark-mode #about {
+  .text-blue {
+    color: #5dade2;
+  }
+
+  .badge {
+    color: white;
+    border-color: white !important;
+
+    &:hover {
+      background: #47BA87;
+      border-color: #47BA87 !important;
+    }
+  }
+
+  h6,
+  p,
+  li {
+    color: #ddd;
+  }
+}

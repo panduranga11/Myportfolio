@@ -1,0 +1,59 @@
+#practicle_skills {
+  margin-bottom: 5rem;
+
+  .category-title {
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: default;
+
+    &:hover {
+      color: #47BA87;
+      transform: scale(1.05);
+    }
+  }
+
+  article.skill-card {
+    width: 15rem;
+    height: 5rem;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-image {
+      height: 30px;
+      width: 30px;
+      object-fit: contain;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      background-color: #f0f8ff; // Added hover background color
+    }
+  }
+}
+
+.dark-mode #practicle_skills {
+  article.skill-card {
+    background: #161b22;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    color: white;
+
+    &:hover {
+      background: #47BA87;
+      color: white;
+    }
+  }
+}
