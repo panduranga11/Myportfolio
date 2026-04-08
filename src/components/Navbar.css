@@ -1,0 +1,120 @@
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  transition: top 0.4s var(--ease-out), opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+}
+
+.navbar.hidden {
+  top: -80px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navbar-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(12, 12, 12, 0.85);
+  border: 1px solid var(--black-border);
+  border-radius: 100px;
+  padding: 6px 8px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.navbar-logo {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--white);
+  padding: 6px 16px;
+  letter-spacing: -0.02em;
+  margin-right: 8px;
+}
+
+.navbar-logo span {
+  color: var(--red);
+}
+
+.navbar-link {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--white-dim);
+  padding: 7px 14px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  border: none;
+  background: none;
+}
+
+.navbar-link:hover,
+.navbar-link.active {
+  color: var(--white);
+  background: rgba(255,255,255,0.07);
+}
+
+.navbar-link.active {
+  color: var(--white);
+}
+
+.navbar-cta {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  border-radius: 100px;
+  padding: 8px 18px;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: background 0.2s, transform 0.2s var(--ease-back), box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.navbar-cta:hover {
+  background: #ff4757;
+  transform: scale(1.04);
+  box-shadow: 0 0 20px rgba(230, 57, 70, 0.4);
+}
+
+/* Hamburger for mobile */
+.navbar-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 8px 12px;
+}
+
+@media (max-width: 700px) {
+  .navbar-pill {
+    gap: 2px;
+    padding: 5px 6px;
+  }
+  .navbar-link {
+    display: none;
+  }
+  .navbar-link.show-mobile {
+    display: block;
+  }
+  .navbar-cta {
+    padding: 7px 14px;
+    font-size: 0.78rem;
+  }
+}

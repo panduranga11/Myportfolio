@@ -1,0 +1,263 @@
+/* ── Connect + Footer ─────────────────────────────── */
+.connect-section {
+  padding: var(--section-pad) clamp(24px, 6vw, 100px);
+  background: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+
+/* Big CTA card */
+.connect-cta-card {
+  background: var(--black-card);
+  border: 1px solid var(--black-border);
+  border-radius: 20px;
+  padding: clamp(40px, 7vw, 80px) clamp(32px, 6vw, 70px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80px;
+}
+
+.connect-cta-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(230,57,70,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.connect-logo-mark {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--red);
+  margin-bottom: 28px;
+  display: block;
+  line-height: 1;
+}
+
+.connect-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin-bottom: 16px;
+}
+
+.connect-sub {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--white-dim);
+  margin-bottom: 36px;
+  line-height: 1.6;
+}
+
+.connect-email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s var(--ease-back), box-shadow 0.3s;
+  border: none;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  margin-bottom: 12px;
+}
+.connect-email-btn:hover {
+  background: var(--red);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(230,57,70,0.3);
+}
+.connect-email-btn .email-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 50%;
+  font-size: 0.8rem;
+}
+
+.connect-caption {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--white-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Social links grid */
+.connect-socials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 80px;
+}
+
+.connect-social-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--black-card);
+  border: 1px solid var(--black-border);
+  border-radius: 12px;
+  padding: 16px 20px;
+  text-decoration: none;
+  transition: border-color 0.2s, transform 0.2s var(--ease-out), background 0.2s;
+}
+.connect-social-card:hover {
+  border-color: var(--social-color);
+  background: rgba(255,255,255,0.03);
+  transform: translateY(-3px);
+}
+
+.social-card-icon {
+  font-size: 1.5rem;
+  color: var(--social-color);
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease-back);
+}
+.connect-social-card:hover .social-card-icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+
+.social-card-name {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.social-card-handle {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--white-muted);
+  margin-top: 2px;
+}
+
+/* Footer strip */
+.footer-strip {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--white);
+}
+.footer-logo span { color: var(--red); }
+
+.footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--white-muted);
+  text-align: center;
+  flex: 1;
+  letter-spacing: 0.04em;
+}
+
+.footer-back-top {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--white-dim);
+  cursor: pointer;
+  transition: color 0.2s;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.footer-back-top:hover { color: var(--white); }
+.footer-back-top-icon {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--black-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+.footer-back-top:hover .footer-back-top-icon {
+  border-color: var(--red);
+  background: var(--red-dim);
+}
+
+@media (max-width: 600px) {
+  .connect-section {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .connect-cta-card {
+    padding: 36px 18px;
+    border-radius: 16px;
+    margin-bottom: 48px;
+  }
+
+  .connect-headline {
+    font-size: clamp(1.6rem, 7vw, 2.4rem);
+  }
+
+  .connect-sub {
+    font-size: 0.88rem;
+    margin-bottom: 24px;
+  }
+
+  .connect-email-btn {
+    font-size: 0.78rem;
+    padding: 12px 18px;
+    gap: 8px;
+    max-width: 100%;
+    word-break: break-all;
+  }
+
+  .connect-email-btn .email-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+  }
+
+  .connect-socials-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 48px;
+  }
+
+  .footer-strip {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-back-top {
+    display: none;
+  }
+}

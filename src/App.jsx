@@ -1,52 +1,84 @@
-import React, { useState, useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.scss';
+import React, { useEffect, useRef } from 'react';
+import './index.css';
+import './App.css';
 
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
+import Navbar      from './components/Navbar';
+import Hero        from './components/Hero';
+import Projects    from './components/Projects';
+import CodingProfile from './components/CodingProfile';
+import Education   from './components/Education';
+import Footer      from './components/Footer';
+import StarCanvas  from './components/StarCanvas';
 
-function App() {
-  // Dark mode state
-  const [darkMode, setDarkMode] = useState(sessionStorage.getItem('darkMode') === 'true');
+/* ── Custom bi-cursor ──────────────────────────────── */
+function Cursor() {
+  const dotRef  = useRef(null);
+  const ringRef = useRef(null);
 
   useEffect(() => {
-    // Initialize AOS
-    AOS.init({
-      duration: 1000,
-      once: false, // mirrors Vue config or default behavior
-    });
-    
-    // Apply dark mode class to body or app
-    if (darkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  }, [darkMode]);
+    let mx = 0, my = 0;
+    let rx = 0, ry = 0;
+    let raf;
 
-  const toggleDarkMode = () => {
-    const newMode = !darkMode;
-    setDarkMode(newMode);
-    sessionStorage.setItem('darkMode', newMode.toString());
-  };
+    const onMove = (e) => { mx = e.clientX; my = e.clientY; };
+    const onEnter = () => {
+      dotRef.current?.classList.add('hover');
+      ringRef.current?.classList.add('hover');
+    };
+    const onLeave = () => {
+      dotRef.current?.classList.remove('hover');
+      ringRef.current?.classList.remove('hover');
+    };
+
+    const tick = () => {
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+      }
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      if (ringRef.current) {
+        ringRef.current.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener('mousemove', onMove);
+    document.querySelectorAll('a, button, [role="button"], .navbar-link').forEach((el) => {
+      el.addEventListener('mouseenter', onEnter);
+      el.addEventListener('mouseleave', onLeave);
+    });
+
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener('mousemove', onMove);
+    };
+  }, []);
 
   return (
-    <div id="app" className={darkMode ? 'dark-mode' : ''}>
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      {/* Journey and WriteMe were in original but maybe optional? User didn't prioritize them. 
-          Contact covers footer. 
-      */}
-      <Contact />
+    <>
+      <div ref={dotRef}  className="cursor"      aria-hidden="true" />
+      <div ref={ringRef} className="cursor-ring" aria-hidden="true" />
+    </>
+  );
+}
+
+
+
+/* ── App ───────────────────────────────────────────── */
+function App() {
+  return (
+    <div id="app">
+      <StarCanvas />
+      <Cursor />
+      <Navbar />
+      <main>
+        <Hero />
+        <Projects />
+        <CodingProfile />
+        <Education />
+        <Footer />
+      </main>
     </div>
   );
 }

@@ -1,94 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
-import { FaMoon, FaSun } from 'react-icons/fa';
-import './Navbar.scss';
+import './Navbar.css';
 
-const Navbar = ({ darkMode, toggleDarkMode }) => {
-  const [show, setShow] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [glossy, setGlossy] = useState(false);
+const NAV_LINKS = [
+  { label: 'About',    to: 'hero' },
+  { label: 'Projects', to: 'projects' },
+  { label: 'Coding',   to: 'coding' },
+  { label: 'Education',to: 'education' },
+];
 
-  const controlNavbar = () => {
-    if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) { 
-        // if scroll down hide the navbar
-        setShow(false);
-      } else { 
-        // if scroll up show the navbar
-        setShow(true);  
-      }
-      
-      if (window.scrollY > 50) {
-        setGlossy(true);
-      } else {
-        setGlossy(false);
-      }
-
-      setLastScrollY(window.scrollY);
-    }
-  };
+const Navbar = () => {
+  const [visible, setVisible] = useState(true);
+  const [lastY, setLastY]     = useState(0);
+  const [active, setActive]   = useState('hero');
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar);
-      // cleanup function
-      return () => {
-        window.removeEventListener('scroll', controlNavbar);
-      };
-    }
-  }, [lastScrollY]);
+    const handleScroll = () => {
+      const y = window.scrollY;
+      setVisible(y < lastY || y < 80);
+      setLastY(y);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastY]);
 
   return (
-    <div 
-        id="navigation" 
-        className={`py-3 shadow nav ${show ? 'nav-visible' : 'nav-hidden'} ${glossy ? 'glossy' : ''}`}
-    >
-      <div className="container d-flex justify-content-between">
-        <h2 className="d-inline">Portfolio</h2>
-        <ul className="d-flex mb-0">
-          <li className="p-2 scroll-to">
-            <Link activeClass="active" to="summary" spy={true} smooth={true} offset={-70} duration={500}>
-              Summary
-            </Link>
-          </li>
-          <li className="p-2 scroll-to">
-            <Link activeClass="active" to="about" spy={true} smooth={true} offset={-70} duration={500}>
-              Experience
-            </Link>
-          </li>
-          <li className="p-2 scroll-to">
-            <Link activeClass="active" to="practicle_skills" spy={true} smooth={true} offset={-70} duration={500}>
-              Skills
-            </Link>
-          </li>
-          <li className="p-2 scroll-to">
-            <Link activeClass="active" to="projects" spy={true} smooth={true} offset={-70} duration={500}>
-              Projects
-            </Link>
-          </li>
-          <li className="p-2 scroll-to">
-            <Link activeClass="active" to="contact" spy={true} smooth={true} offset={-70} duration={500}>
-              Contact
-            </Link>
-          </li>
+    <nav className={`navbar${visible ? '' : ' hidden'}`} aria-label="Main navigation">
+      <div className="navbar-pill">
+        <span className="navbar-logo">P<span>.</span></span>
 
-          <li className="pt-2 pl-3">
-            <input 
-              type="checkbox" 
-              className="checkbox" 
-              id="checkbox" 
-              checked={darkMode} 
-              onChange={toggleDarkMode} 
-            />
-            <label htmlFor="checkbox" className="checkbox-label">
-              <FaMoon className="fa-moon" />
-              <FaSun className="fa-sun" />
-              <span className="ball"></span>
-            </label>
-          </li>
-        </ul>
+        {NAV_LINKS.map(({ label, to }) => (
+          <Link
+            key={to}
+            to={to}
+            spy={true}
+            smooth={true}
+            duration={700}
+            offset={-20}
+            onSetActive={() => setActive(to)}
+            className={`navbar-link${active === to ? ' active' : ''}`}
+          >
+            {label}
+          </Link>
+        ))}
+
+        <Link
+          to="connect"
+          smooth={true}
+          duration={700}
+          className="navbar-cta"
+        >
+          Let&apos;s Talk
+        </Link>
       </div>
-    </div>
+    </nav>
   );
 };
 
