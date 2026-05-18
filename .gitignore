@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Portfolio - unnecessary/local-only files
+demovedio/
+Projectlookalikesamples/
+build_log.txt
+lint.txt
+lint_output.txt
+journal_extracted.txt
+journal_ref.txt
+generate_dr_ppt.mjs
+*.pptx
